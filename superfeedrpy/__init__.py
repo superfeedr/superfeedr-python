@@ -78,7 +78,7 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 		pubsub = ET.Element('{http://jabber.org/protocol/pubsub}pubsub')
 		pubsub.attrib['xmlns:superfeedr'] = 'http://superfeedr.com/xmpp-pubsub-ext'
 		subscriptions = ET.Element('subscriptions')
-		subscriptions.attib['jid'] = self.jid
+		subscriptions.attrib['jid'] = self.jid
 		subscriptions.attrib['superfeedr:page'] = page
 		pubsub.append(subscriptions)
 		iq = self.xmpp.makeIqSet(pubsub)
