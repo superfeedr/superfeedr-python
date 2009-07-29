@@ -36,10 +36,11 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 		xml = stanza.xml
 		event = {}
 		statusx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status')
-		httpx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://jabber.org/protocol/pubsub#event}http')
-		next_fetchx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://jabber.org/protocol/pubsub#event}next_fetch')
-		itemsx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items')
+		httpx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://superfeedr.com/xmpp-pubsub-ext}http')
+                next_fetchx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://superfeedr.com/xmpp-pubsub-ext}next_fetch')
+                itemsx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items')
 		entriesx = xml.findall('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items/{http://jabber.org/protocol/pubsub#event}item/{http://www.w3.org/2005/Atom}entry')
+		print dict(statusx=statusx, httpx=httpx, next_fetchx=next_fetchx, itemsx=itemsx,entriesx= entriesx)
 		if None not in (statusx, httpx, next_fetchx, itemsx, entriesx):
 			event['xml'] = xml
 			event['feed'] = itemsx.get('node')
@@ -65,7 +66,7 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 					entry['published'] = publishedx.text
 				event['entries'].append(entry)
 		self.event('superfeedr', event)
-		if len(event['entries']) > 0:
+		if len(event.get('entries',[])) > 0:
 			self.event('superfeedr_entry', event)
 	
 	def subscribe(self, feed):
