@@ -1,12 +1,12 @@
-h1.Superfeedr XMPP API Python Wrapper
+# Superfeedr XMPP API Python Wrapper
 
-h2.Requirements:
-"SleekXMPP":http://code.google.com/p/sleekxmpp/, Download the source code : "svn://netflint.net/sleekxmpp/trunk":svn://netflint.net/sleekxmpp/trunk 
+## Requirements:
+[SleekXMPP] (http://code.google.com/p/sleekxmpp/), Download the source code : svn://netflint.net/sleekxmpp/trunk
 
-h2.Installation:
-@sudo python setup.py install@
+## Installation:
+    sudo python setup.py install
 
-h2.Warning
+## Warning
 
 We know our limits and we know *we can’t actively support* wrappers in _every_ languages. Like everybody, we have our favorite languages and platform, and there is little chance that we ever get a deep enough knownledge in all that languages that you guys use to offer great services. So, for us, the *limit of what we can provide and support is our API (both XMPP and PubSubHubbub).*
 
