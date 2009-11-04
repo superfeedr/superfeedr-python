@@ -1,7 +1,8 @@
 # Superfeedr XMPP API Python Wrapper
 
 ## Requirements:
-[SleekXMPP] (http://code.google.com/p/sleekxmpp/), Download the source code : svn://netflint.net/sleekxmpp/trunk
+* Python3k
+* [SleekXMPP] (http://code.google.com/p/sleekxmpp/), Download the source code : svn://netflint.net/sleekxmpp/trunk
 
 ## Installation:
     sudo python setup.py install
@@ -14,6 +15,6 @@ However, we’re not blind either and we know how these parsers are important fo
 
 These libs are not ours, _they wait for your input_, _your documentation_, _your testing_, as well as_ your suggestions for new features_. We will just help gathering them and keeping track by connecting the people who made them with the people who use them.
 
-Please, fork it and make them better!
+Please, fork it and make it better!
 
 
