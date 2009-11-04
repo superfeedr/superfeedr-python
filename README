@@ -1,7 +1,0 @@
-Requirements:
-SleekXMPP - svn://netflint.net/sleekxmpp/trunk
-
-Installation:
-sudo python setup.py install
-
-
