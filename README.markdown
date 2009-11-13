@@ -9,6 +9,23 @@ If you use **Python 2.6** Thanks to [dfdeshom](http://github.com/dfdeshom/)
 ## Installation:
     sudo python setup.py install
 
+## Example
+
+    from superfeedrpy import Superfeedr
+    import time
+
+    def sf_message(event):
+    	print "received event without entries"
+
+    def sf_entry(event):
+    	print "received entry with events", event
+
+    sf = Superfeedr('user@superfeedr.com', 'password-here')
+    sf.on_notification(sf_message)
+    sf.on_entry(sf_entry)
+    while True:
+    	time.sleep(1)
+
 ## Warning
 
 We know our limits and we know *we can’t actively support* wrappers in _every_ languages. Like everybody, we have our favorite languages and platform, and there is little chance that we ever get a deep enough knownledge in all that languages that you guys use to offer great services. So, for us, the *limit of what we can provide and support is [our API (both XMPP and PubSubHubbub)](http://superfeedr.com/documentation).*
