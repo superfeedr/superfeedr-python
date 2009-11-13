@@ -5,6 +5,7 @@ import time
 import Queue
 from sleekxmpp.xmlstream.handler.callback import Callback
 from sleekxmpp.xmlstream.matcher.xpath import MatchXPath
+import xml.etree.cElementTree as ET
 
 class Superfeedr(sleekxmpp.ClientXMPP):
 	
@@ -79,14 +80,15 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 		pubsub = ET.Element('{http://jabber.org/protocol/pubsub}pubsub')
 		pubsub.attrib['xmlns:superfeedr'] = 'http://superfeedr.com/xmpp-pubsub-ext'
 		subscriptions = ET.Element('subscriptions')
-		subscriptions.attrib['jid'] = self.jid
-		subscriptions.attrib['superfeedr:page'] = page
+		subscriptions.attrib['jid'] = self.fulljid
+		subscriptions.attrib['superfeedr:page'] = str(page)
 		pubsub.append(subscriptions)
-		iq = self.xmpp.makeIqSet(pubsub)
-		iq.attrib['to'] = jid
-		iq.attrib['from'] = self.xmpp.fulljid
+		iq = self.makeIqSet(pubsub)
+		iq.attrib['to'] = 'firehoser.superfeedr.com' #self.jid
+		iq.attrib['from'] = self.fulljid
+		iq.attrib['type'] = 'get'
 		id = iq.get('id')
-		result = self.xmpp.send(iq, "<iq id='%s'/>" % id)
+		result = self.send(iq, "<iq id='%s'/>" % id)
 		if result is False or result is None or result.get('type') == 'error': return False
 		nodes = result.findall('{http://jabber.org/protocol/pubsub}pubsub/{http://jabber.org/protocol/pubsub}subscriptions/{http://jabber.org/protocol/pubsub}subscription')
 		if nodes is None: return []
