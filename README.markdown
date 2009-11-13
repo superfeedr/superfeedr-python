@@ -2,8 +2,11 @@
 
 ## Requirements:
 If you use **Python3k**
+
 * [SleekXMPP](http://code.google.com/p/sleekxmpp/), Download the source code : svn://netflint.net/sleekxmpp/trunk
+
 If you use **Python 2.6** Thanks to [dfdeshom](http://github.com/dfdeshom/)
+
 * [SleekXMPP2.6](http://bitbucket.org/dfdeshom/sleekxmpp2.6/src/) 
 
 ## Installation:
