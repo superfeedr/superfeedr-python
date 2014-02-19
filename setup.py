@@ -16,16 +16,16 @@ import sys
 #     min_version = '0.6c6'
 # else:
 #     min_version = '0.6a9'
-# 
+#
 # try:
 #     use_setuptools(min_version=min_version)
 # except TypeError:
 #     # locally installed ez_setup won't have min_version
 #     use_setuptools()
-# 
+#
 # from setuptools import setup, find_packages, Extension, Feature
 
-VERSION          = '0.1'
+VERSION          = '0.2'
 DESCRIPTION      = 'Superfeedrpy'
 LONG_DESCRIPTION = """
 Superfeedrpy is a Superfeedr wrapper for SleekXMPP
@@ -48,7 +48,7 @@ setup(
     url          = 'http://code.google.com/p/sleekxmpp',
     license      = 'GPLv2',
     platforms    = [ 'any' ],
-    packages     = [ 'superfeedrpy', 
+    packages     = [ 'superfeedrpy',
 					],
     requires     = [ 'sleekxmpp', 'tlslite' ],
     )
