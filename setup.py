@@ -48,8 +48,7 @@ setup(
     url          = 'http://code.google.com/p/sleekxmpp',
     license      = 'GPLv2',
     platforms    = [ 'any' ],
-    packages     = [ 'superfeedrpy',
-					],
+    packages     = [ 'superfeedrpy' ],
     requires     = [ 'sleekxmpp', 'tlslite' ],
     )
 
