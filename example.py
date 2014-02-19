@@ -7,7 +7,7 @@ def sf_message(event):
 def sf_entry(event):
 	print "received entry with events", event
 
-sf = Superfeedr('user@superfeedr.com', 'password-here')
+sf = Superfeedr('demo@superfeedr.com', 'demo')
 sf.on_notification(sf_message)
 sf.on_entry(sf_entry)
 while True:

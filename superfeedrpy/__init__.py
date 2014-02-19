@@ -8,7 +8,7 @@ from sleekxmpp.xmlstream.matcher.xpath import MatchXPath
 import xml.etree.cElementTree as ET
 
 class Superfeedr(sleekxmpp.ClientXMPP):
-	
+
 	def __init__(self, jid, password):
 
 		self.success = False
@@ -27,7 +27,7 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 			start = self.waitforstart.get(10)
 			if start is None:
 				self.success = False
-	
+
 	def _start(self, event):
 		self.getRoster()
 		self.sendPresence()
@@ -40,7 +40,7 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 		httpx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://superfeedr.com/xmpp-pubsub-ext}http')
                 next_fetchx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://superfeedr.com/xmpp-pubsub-ext}status/{http://superfeedr.com/xmpp-pubsub-ext}next_fetch')
                 itemsx = xml.find('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items')
-		entriesx = xml.findall('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items/{http://jabber.org/protocol/pubsub#event}item/{http://www.w3.org/2005/Atom}entry')
+		entriesx = xml.findall('{http://jabber.org/protocol/pubsub#event}event/{http://jabber.org/protocol/pubsub#event}items/{http://jabber.org/protocol/pubsub}item/{http://www.w3.org/2005/Atom}entry')
 		print dict(statusx=statusx, httpx=httpx, next_fetchx=next_fetchx, itemsx=itemsx,entriesx= entriesx)
 		if None not in (statusx, httpx, next_fetchx, itemsx, entriesx):
 			event['xml'] = xml
@@ -69,10 +69,10 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 		self.event('superfeedr', event)
 		if len(event.get('entries',[])) > 0:
 			self.event('superfeedr_entry', event)
-	
+
 	def subscribe(self, feed):
 		return self.plugin['xep_0060'].subscribe('firehoser.superfeedr.com', feed)
-	
+
 	def unsubscribe(self, feed):
 		return self.plugin['xep_0060'].unsubscribe('firehoser.superfeedr.com', feed)
 
@@ -99,7 +99,7 @@ class Superfeedr(sleekxmpp.ClientXMPP):
 
 	def on_notification(self, callback):
 		self.add_event_handler('superfeedr', callback)
-	
+
 	def on_entry(self, callback):
 		self.add_event_handler('superfeedr_entry', callback)
-		
+
