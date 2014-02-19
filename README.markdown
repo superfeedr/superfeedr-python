@@ -1,5 +1,7 @@
 # Superfeedr XMPP API Python Wrapper
 
+*Warning* : this wrapper is known for its lack of support by its developer. You may want to give a look at [SFPY](http://github.com/superfeedr/sfpy) as well.
+
 ## Requirements:
 If you use **Python3k**
 
